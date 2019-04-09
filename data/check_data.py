@@ -25,3 +25,6 @@ q3_3 = np.load('./q3_3.npz')
 print(q3_3['arr_0'][0].shape)
 print(q3_3['arr_0'][1].shape)
 print(q3_3['arr_0'][2].shape)
+
+q4_2 = np.load('../data/q4_2.npz')['arr_0']
+print(q4_2)
