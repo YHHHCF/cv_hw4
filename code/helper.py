@@ -114,6 +114,9 @@ def epipolarMatchGUI(I1, I2, F):
 
     sy, sx, _ = I2.shape
 
+    pt1s = []
+    pt2s = []
+
     f, [ax1, ax2] = plt.subplots(1, 2, figsize=(12, 9))
     ax1.imshow(I1)
     ax1.set_title('Select a point in this image')
@@ -128,6 +131,8 @@ def epipolarMatchGUI(I1, I2, F):
         if not inpt:
             break
         x, y = inpt[0]
+
+        pt1s.append(inpt[0])
 
         xc = int(x)
         yc = int(y)
@@ -160,3 +165,7 @@ def epipolarMatchGUI(I1, I2, F):
         x2, y2 = sub.epipolarCorrespondence(I1, I2, F, xc, yc)
         ax2.plot(x2, y2, 'ro', MarkerSize=8, linewidth=2)
         plt.draw()
+
+        pt2s.append((x2, y2))
+
+    return pt1s, pt2s
